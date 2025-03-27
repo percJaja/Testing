@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Monitoring Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Optional: Link Google Fonts or other font libraries here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="preload"> <!-- Start with preload class to prevent initial transitions -->
+
+    <div class="page"> <!-- Main container for theme switching -->
+
+        <header class="app-header">
+            <div class="logo-container">
+                <!-- Placeholder for a logo -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="currentColor" class="logo-icon" aria-hidden="true">
+                  <path d="M12 2l-8 4.5v9l8 4.5 8-4.5v-9L12 2zm6 12.3l-6 3.4-6-3.4V7.7l6-3.4 6 3.4v6.6z"/>
+                  <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                </svg>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="header-controls">
+                <div id="connection-status" class="connection-status connection-status--unknown" title="Connection status: UNKNOWN">
+                    UNKNOWN
+                </div>
+                <button id="toggle-theme" class="theme-toggle-btn" aria-label="Switch to light theme" aria-pressed="false" title="Toggle Theme">
+                    <span class="icon-sun" aria-hidden="true">☀️</span>
+                    <span class="icon-moon" aria-hidden="true">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <aside class="app-sidebar">
+                <h2>Controls</h2>
+                <form id="app-controls-form" onsubmit="return false;"> <!-- Prevent default form submission -->
+                    <fieldset>
+                        <legend>Refresh Settings</legend>
+                        <button id="enable-refresh" class="button" aria-pressed="false">
+                            Enable Auto-Refresh
+                        </button>
+                        <button id="manual-refresh" class="button button--secondary" title="Force an immediate data refresh">
+                            Refresh Now
+                        </button>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>User Settings</legend>
+                        <div class="form-group">
+                             <label for="password">API Key:</label>
+                             <input type="password" id="password" name="password" data-persist="userApiKey" placeholder="Enter secure key" autocomplete="current-password">
+                        </div>
+                         <div class="form-group">
+                             <label for="reason">Update Reason:</label>
+                             <textarea id="reason" name="reason" rows="3" data-persist="lastUpdateReason" placeholder="Optional: reason for update"></textarea>
+                         </div>
+                         <div class="form-group">
+                            <label for="priority-level">Priority:</label>
+                            <select id="priority-level" name="priority" data-persist="selectedPriority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                         </div>
+                         <div class="form-group form-group--checkbox">
+                            <input type="checkbox" id="expert-mode" name="expert_mode" data-persist="expertModeEnabled">
+                            <label for="expert-mode">Enable Expert Mode</label>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="button button--primary" style="margin-top: 1rem;" title="Simulate Save Action (no actual submission)">
+                        Save Settings
+                    </button>
+                </form>
+            </aside>
+
+            <section class="main-content" aria-live="polite" aria-atomic="true">
+                <header>
+                    <h2>Data Overview</h2>
+                </header>
+                <div id="data-display" class="data-display-area">
+                    <!-- Data will be loaded here by JavaScript -->
+                    <p class="placeholder">Initializing data view...</p>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; <span id="current-year"></span> Advanced Dashboard Inc. All rights reserved.</p>
+        </footer>
+
+    </div> <!-- end .page -->
+
+    <!-- Popup Notification Area -->
+    <div class="popup" id="notification-popup" role="alert" aria-live="assertive" aria-atomic="true">
+        <span id="response">Status message appears here.</span>
+        <button class="popup-close" aria-label="Dismiss notification" onclick="this.parentElement.classList.remove('popup_visible')">&times;</button>
+    </div>
+
+    <!-- JavaScript should be included AFTER this point -->
+    
+    
+    <script src="main.js" defer></script> -->
+    <script>
+        // Simple script to set current year in footer and remove preload class after load
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        window.addEventListener('load', () => {
+          document.body.classList.remove('preload');
+        });
+    </script>
+
+</body>
+</html>
